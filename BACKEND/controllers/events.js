@@ -2,13 +2,13 @@ const eventModel = require("../models/eventModel");
 
 module.exports.postEvents = async (req, res) => {
   try {
-    const { title, description, time, date, location, id } = req.body;
+    const { title, description, time, date, location, organizer } = req.body;
 
     let event = await eventModel.findOne({
       time: time,
       date: date,
       location: location,
-      organizer: id,
+      organizer: organizer,
     });
 
     if (event) {
@@ -22,7 +22,7 @@ module.exports.postEvents = async (req, res) => {
       time,
       date,
       location,
-      organizer: id,
+      organizer,
     });
     console.log("event created sucessfully");
     return res.status(200).send("event created sucessfully");

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { jwtDecode } from "jwt-decode";
 function Authentication() {
   const [login, setLogin] = useState(false);
   const [guest, setGuest] = useState(false);
@@ -41,7 +40,6 @@ function Authentication() {
       );
       if (res.status === 200) {
         setIsLoggedIn(true);
-        window.location.reload();
       }
     } catch (err) {
       console.log("something went wrong while registering the user");

@@ -2,6 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { io } from "socket.io-client";
 const socket = io("http://localhost:3000");
 
@@ -37,6 +38,7 @@ function InfoEvent({ event, close }) {
         eventid: event._id,
       });
       if (res.status === 200) {
+        toast.success("Slot Booked");
         console.log("updated slots");
       }
     } catch (err) {
@@ -47,12 +49,13 @@ function InfoEvent({ event, close }) {
   return (
     <>
       <div className="z-2 h-full w-full bg-white/30 backdrop-blur-xs flex  flex-col items-end justify-end absolute py-4 px-5 ">
+        <ToastContainer />
         <div className="relative bg-white w-1/2 h-screen rounded-xl shadow-2xl border border-gray-100 flex flex-col overflow-auto ">
           <div className="bg-[#D22E58] p-5 text-white">
             <div className="text-5xl font-medium relative">
               <div className="">{event.title}</div>
               <button
-                class="absolute top-0 right-0 text-xl border-2 border-black shadow-2xl py-2 px-4 rounded-full bg-white font-bold text-[#D22E58]"
+                className="absolute top-0 right-0 text-xl border-2 border-black shadow-2xl py-2 px-4 rounded-full bg-white font-bold text-[#D22E58]"
                 onClick={close}
               >
                 X

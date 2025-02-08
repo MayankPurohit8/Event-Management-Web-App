@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/eventApp");
-
 const eventModel = mongoose.Schema({
   title: String,
   description: String,

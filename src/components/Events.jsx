@@ -31,7 +31,6 @@ function Events() {
 
         {events.length > 0 ? (
           <div className="px-10 flex flex-col gap-2">
-            <div className="px-7 py-4 text-2xl font-medium">January 2025</div>
             {events.map((event, index) => (
               <div
                 onClick={() => {

@@ -3,13 +3,13 @@ import Events from "./Events";
 import axios from "axios";
 import CreateEvents from "./CreateEvents";
 import Cookies from "js-cookie";
-import ManageEvents from "./manageEvents";
+import ManageEvents from "./ManageEvents";
 import Authentication from "./Authentication";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 
 function DashBoard() {
-  const [guest, setGuest] = useState(true);
+  const [guest, setGuest] = useState(false);
   const [username, setUserName] = useState("");
 
   useEffect(() => {
@@ -17,7 +17,6 @@ function DashBoard() {
       const token = Cookies.get("token");
       if (token) {
         const decoded = jwtDecode(token);
-        console.log(decoded);
         setGuest(decoded.guest);
         setUserName(decoded.name);
       }

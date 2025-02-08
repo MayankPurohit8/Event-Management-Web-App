@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-function EditEvent({ event }) {
+function EditEvent({ event, close }) {
   const [title, setTitle] = useState(event.title);
   const [description, setDescription] = useState(event.description);
   const [date, setDate] = useState(event.date);
@@ -8,6 +8,7 @@ function EditEvent({ event }) {
   const [time, setTime] = useState(event.time);
 
   const handleUpdateEvent = async (e) => {
+    e.preventDefault();
     try {
       let res = await axios.post("http://localhost:3000/events/updateEvent", {
         title,
@@ -32,13 +33,21 @@ function EditEvent({ event }) {
           onSubmit={handleUpdateEvent}
           className="relative bg-white w-1/2 h-screen rounded-xl shadow-2xl border border-gray-100 flex flex-col   "
         >
-          <div className="bg-[#D22E58] p-5 text-white">
-            <input
-              type="text"
-              className="text-5xl font-medium border-b p-2 outline-none "
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+          <div className="bg-[#D22E58] p-5 text-white ">
+            <div className="relative">
+              <input
+                type="text"
+                className="text-5xl font-medium p-2 outline-none "
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <button
+                className="absolute top-0 right-0 text-xl border-2 border-black shadow-2xl py-2 px-4 rounded-full bg-white font-bold text-[#D22E58]"
+                onClick={close}
+              >
+                X
+              </button>
+            </div>
             <input
               className=" font-extralight py-2 w-full outline-none"
               value={description}

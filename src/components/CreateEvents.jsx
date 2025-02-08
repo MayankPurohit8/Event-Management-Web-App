@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
-
+import { toast, ToastContainer } from "react-toastify";
 function CreateEvents() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -31,6 +31,7 @@ function CreateEvents() {
     e.preventDefault();
     if (!title || !description || !location || !date || !time) {
       console.log("Please fill in all required fields.");
+      toast.error("Fill all the Fields");
       return;
     }
 
@@ -43,9 +44,10 @@ function CreateEvents() {
           location,
           date,
           time,
-          userId: id,
+          organizer: id,
         }
       );
+      toast.success("Event Created");
       console.log("Event created successfully:", response.data);
     } catch (err) {
       console.log("Error creating event:", err);
@@ -55,6 +57,7 @@ function CreateEvents() {
   return (
     <>
       <div className="size-full p-5 bg-[#fff0f3] ">
+        <ToastContainer />
         <form
           onSubmit={handlePostEvent}
           className="size-full flex flex-col gap-10"

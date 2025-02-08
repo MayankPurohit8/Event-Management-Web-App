@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/eventApp");
+mongoose.connect("");
 
 const userModel = mongoose.Schema({
   name: String,
