@@ -1,10 +1,16 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
+
 const uri = process.env.MONGODB_URI;
 
-mongooose
+/*mongoose
   .connect(uri)
   .then(() => {
-    console.log("database connected");
+    console.log("Database connected");
   })
-  .catch("Something went wrong wile connecting to database", err.message);
+  .catch((err) =>
+    console.log(
+      "Something went wrong while connecting to the database",
+      err.message
+    )
+  );*/
