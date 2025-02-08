@@ -9,7 +9,6 @@ function Authentication() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     const verifyToken = () => {
       let token = Cookies.get("token");
