@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("");
+mongoose.connect("mongodb://localhost:27017/eventApp");
 
 const userModel = mongoose.Schema({
   name: String,
   email: String,
   password: String,
-  guest: { Boolean, default: false },
+  guest: { type: Boolean, default: false },
 });
 
-module.exports = mongoose.model("guest", userModel);
+module.exports = mongoose.model("user", userModel);

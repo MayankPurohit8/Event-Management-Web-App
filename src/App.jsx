@@ -1,9 +1,13 @@
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Authentication from "./components/Authentication";
+import DashBoard from "./components/DashBoard";
 function App() {
   return (
     <>
-      <Authentication />
+      <Router>
+        <DashBoard />
+      </Router>
     </>
   );
 }

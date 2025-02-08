@@ -4,23 +4,28 @@ const verifyPassword = require("../utils/verifyPassword");
 const genToken = require("../utils/genToken");
 module.exports.register = async (req, res) => {
   try {
-    let { name, email, password } = req.body;
-
+    let { name, email, password, guest } = req.body;
+    console.log("got data");
+    console.log("checking for existing users");
     let user = await userModel.findOne({ email: email });
-    if (user) return res.status(400).send("User already registered with email");
-
+    if (user != null) {
+      console.log("user exists");
+      return res.status(400).send("User already registered with email");
+    }
+    console.log("creating user");
     let newUser = await userModel.create({
       name,
       email,
       password: await genHash(password),
+      guest,
     });
-
-    let token = genToken(newUser._id);
+    console.log("user created");
+    let token = genToken(newUser._id, newUser.guest, newUser.name);
     res.cookie("token", token);
-
-    return res.status(201).send("user Registered successfully");
+    console.log("registerd");
+    return res.status(200).send("user Registered successfully");
   } catch (err) {
-    console.log("something went wrong while creating user");
+    console.log("something went wrong while creating user", err.message);
     return res.status(500).send("something went wrong while creating user");
   }
 };
@@ -29,7 +34,7 @@ module.exports.login = async (req, res) => {
     const { email, password } = req.body;
     let user = await userModel.findOne({ email: email });
 
-    if (!user) {
+    if (user == null) {
       console.log("user does not exist");
       return res.status(400).send("user does not exist");
     }
@@ -37,7 +42,7 @@ module.exports.login = async (req, res) => {
     let result = await verifyPassword(password, user.password);
 
     if (result) {
-      let token = genToken(user._id);
+      let token = await genToken(user._id, user.guest, user.name);
       res.cookie("token", token);
       console.log("user logged in successfully");
       return res.status(200).send("Logged in successfully");
@@ -48,5 +53,14 @@ module.exports.login = async (req, res) => {
   } catch (err) {
     console.log("something went wrong while logging in user");
     return res.status(500).send("something went wron while logging user");
+  }
+};
+
+module.exports.logout = (req, res) => {
+  try {
+    res.cookie("token", "", { expires: new Date(0) });
+    return res.status(200).send("cookie deleted");
+  } catch (err) {
+    console.log("something went wrong while deleting cookie!");
   }
 };
