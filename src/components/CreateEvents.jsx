@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { toast, ToastContainer } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 function CreateEvents() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -36,17 +37,14 @@ function CreateEvents() {
     }
 
     try {
-      const response = await axios.post(
-        `${backendUrl}/user/postEvent",
-        {
-          title,
-          description,
-          location,
-          date,
-          time,
-          organizer: id,
-        }
-      );
+      const response = await axios.post(`${backendUrl}/user/postEvent`, {
+        title,
+        description,
+        location,
+        date,
+        time,
+        organizer: id,
+      });
       toast.success("Event Created");
       console.log("Event created successfully:", response.data);
     } catch (err) {

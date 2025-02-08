@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import InfoEvent from "./Infoevent";
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 function Events() {
   const [events, setEvents] = useState([]);
   const [visibility, setVisiblity] = useState(false);
@@ -14,7 +14,7 @@ function Events() {
   useEffect(() => {
     const getEvents = async () => {
       try {
-        let res = await axios.get(`${backendUrl}/events/getEvents");
+        let res = await axios.get(`${backendUrl}/events/getEvents`);
         setEvents(res.data.events);
       } catch (err) {
         console.log("something went wrong while retrieving events");

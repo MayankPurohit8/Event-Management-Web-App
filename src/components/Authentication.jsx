@@ -8,7 +8,7 @@ function Authentication() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     const verifyToken = () => {
       let token = Cookies.get("token");
@@ -29,7 +29,7 @@ function Authentication() {
       }
 
       let res = await axios.post(
-        `${backendUrl}/user/register",
+        `${backendUrl}/user/register`,
         {
           name,
           email,
@@ -54,7 +54,7 @@ function Authentication() {
         return console.log("empty fields");
       }
       let res = await axios.post(
-        `${backendUrl}/user/login",
+        `${backendUrl}/user/login`,
         {
           email,
           password,
