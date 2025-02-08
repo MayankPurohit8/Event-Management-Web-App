@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "node ./backend/server.js"
+    "start": "node backend/server.js"
   },
   "dependencies": {
     "@flaticon/flaticon-uicons": "^3.3.1",
