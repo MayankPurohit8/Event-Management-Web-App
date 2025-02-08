@@ -33,7 +33,7 @@ function InfoEvent({ event, close }) {
 
   const handleUpdateSlots = async () => {
     try {
-      let res = await axios.post("http://localhost:3000/bookSlots", {
+      let res = await axios.post(`${backendUrl}/bookSlots`, {
         userid: id,
         eventid: event._id,
       });

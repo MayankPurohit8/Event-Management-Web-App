@@ -14,7 +14,7 @@ function Events() {
   useEffect(() => {
     const getEvents = async () => {
       try {
-        let res = await axios.get("http://localhost:3000/events/getEvents");
+        let res = await axios.get(`${backendUrl}/events/getEvents");
         setEvents(res.data.events);
       } catch (err) {
         console.log("something went wrong while retrieving events");

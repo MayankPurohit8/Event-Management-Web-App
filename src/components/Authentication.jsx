@@ -29,7 +29,7 @@ function Authentication() {
       }
 
       let res = await axios.post(
-        "http://localhost:3000/user/register",
+        `${backendUrl}/user/register",
         {
           name,
           email,
@@ -54,7 +54,7 @@ function Authentication() {
         return console.log("empty fields");
       }
       let res = await axios.post(
-        "http://localhost:3000/user/login",
+        `${backendUrl}/user/login",
         {
           email,
           password,

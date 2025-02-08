@@ -37,7 +37,7 @@ function CreateEvents() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/postEvent",
+        `${backendUrl}/user/postEvent",
         {
           title,
           description,

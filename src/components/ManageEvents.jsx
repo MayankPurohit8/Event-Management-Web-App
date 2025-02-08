@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import EditEvent from "./EditEvent";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 function ManageEvents() {
   const [events, setEvents] = useState([]);
   const [visibility, setVisibility] = useState(false);
@@ -28,7 +28,7 @@ function ManageEvents() {
 
     const getEvents = async () => {
       try {
-        let res = await axios.get("http://localhost:3000/events/getEvents");
+        let res = await axios.get(`${backendUrl}/events/getEvents`);
         setEvents(res.data.events);
       } catch (err) {
         console.log("something went wrong while retrieving events");

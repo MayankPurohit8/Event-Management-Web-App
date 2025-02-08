@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 function EditEvent({ event, close }) {
   const [title, setTitle] = useState(event.title);
   const [description, setDescription] = useState(event.description);
@@ -10,7 +11,7 @@ function EditEvent({ event, close }) {
   const handleUpdateEvent = async (e) => {
     e.preventDefault();
     try {
-      let res = await axios.post("http://localhost:3000/events/updateEvent", {
+      let res = await axios.post(`${backendUrl}/events/updateEvent`, {
         title,
         description,
         location,
