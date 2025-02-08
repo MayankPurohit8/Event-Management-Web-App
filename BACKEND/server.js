@@ -11,7 +11,7 @@ const { bookSlots } = require("./controllers/bookSlots");
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://your-backend.onrender.com",
     credentials: true,
   },
 });
