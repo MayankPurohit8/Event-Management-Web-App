@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { io } from "socket.io-client";
-const socket = io("http://localhost:3000");
+const socket = io("https://event-management-web-app-backend.onrender.com");
 
 function InfoEvent({ event, close }) {
   const [bookedslots, setBookedSlots] = useState(event.guests.length);
