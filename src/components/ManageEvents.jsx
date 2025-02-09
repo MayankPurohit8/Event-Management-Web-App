@@ -28,7 +28,9 @@ function ManageEvents() {
 
     const getEvents = async () => {
       try {
-        let res = await axios.get(`${backendUrl}/events/getEvents`);
+        let res = await axios.get(`${backendUrl}/events/getEvents`, {
+          withCredentials: true,
+        });
         setEvents(res.data.events);
       } catch (err) {
         console.log("something went wrong while retrieving events");
@@ -42,7 +44,7 @@ function ManageEvents() {
     <>
       <div className="size-full bg-[#fff0f3] overflow-auto custom-scrollbar flex flex-col gap-10 rounded-3xl relative">
         {visibility ? <EditEvent event={selectedEvent} close={close} /> : ""}
-        <div className=" px-7 py-2 text-3xl font-bold">Upcoming Events</div>
+        <div className=" px-7 py-2 text-3xl font-bold">Manage Events</div>
 
         {events.length > 0 ? (
           <div className="px-10 flex flex-col gap-2">
