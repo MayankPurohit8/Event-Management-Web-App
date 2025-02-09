@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { toast, ToastContainer } from "react-toastify";
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+const backendUrl = import.meta.VITE__BACKEND_URL;
 function CreateEvents() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");

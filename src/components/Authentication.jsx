@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+const backendUrl = import.meta.VITE_BACKEND_URL;
 function Authentication() {
   const [login, setLogin] = useState(false);
   const [guest, setGuest] = useState(false);

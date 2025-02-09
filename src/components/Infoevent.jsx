@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { io } from "socket.io-client";
 const socket = io("https://event-management-web-app-backend.onrender.com");
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+const backendUrl = import.meta.VITE__BACKEND_URL;
 
 function InfoEvent({ event, close }) {
   const [bookedslots, setBookedSlots] = useState(event.guests.length);
