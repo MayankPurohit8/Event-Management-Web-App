@@ -27,7 +27,6 @@ function Authentication() {
       e.preventDefault();
 
       if (!name || !email || !password) {
-        console.log("hello");
         return console.log("empty fields");
       }
 
@@ -54,6 +53,7 @@ function Authentication() {
       e.preventDefault();
 
       if (!email || !password) {
+        console.log(backendUrl);
         return console.log("empty fields");
       }
       let res = await axios.post(
@@ -69,7 +69,6 @@ function Authentication() {
 
       if (res.status === 200) {
         setIsLoggedIn(true);
-        window.location.reload();
       }
     } catch (err) {
       console.log("something went wrong while logging in the user");
