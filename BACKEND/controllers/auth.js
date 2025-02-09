@@ -42,8 +42,12 @@ module.exports.login = async (req, res) => {
     let result = await verifyPassword(password, user.password);
 
     if (result) {
+      console.log("password verified generating token");
       let token = await genToken(user._id, user.guest, user.name);
+      console, log("token generated successfully");
+      console.log("cookie is being sent to browser");
       res.cookie("token", token, { sameSite: "none" });
+      console.log("cookie set");
       console.log("user logged in successfully");
       return res.status(200).send("Logged in successfully");
     } else {
@@ -52,7 +56,7 @@ module.exports.login = async (req, res) => {
     }
   } catch (err) {
     console.log("something went wrong while logging in user");
-    return res.status(500).send("something went wron while logging user");
+    return res.status(500).send("something went wrong while logging user");
   }
 };
 
