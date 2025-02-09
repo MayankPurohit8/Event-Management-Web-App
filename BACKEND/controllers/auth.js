@@ -46,7 +46,7 @@ module.exports.login = async (req, res) => {
       let token = await genToken(user._id, user.guest, user.name);
       console, log("token generated successfully");
       console.log("cookie is being sent to browser");
-      res.cookie("token", token, { sameSite: "none" });
+      res.cookie("token", token);
       console.log("cookie set");
       console.log("user logged in successfully");
       return res.status(200).send("Logged in successfully");

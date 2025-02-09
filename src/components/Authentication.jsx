@@ -70,7 +70,10 @@ function Authentication() {
         setIsLoggedIn(true);
       }
     } catch (err) {
-      console.log("something went wrong while logging in the user");
+      console.log(
+        "something went wrong while logging in the user",
+        err.message
+      );
     }
   };
   return (
