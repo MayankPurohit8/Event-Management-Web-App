@@ -9,6 +9,7 @@ function Authentication() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   useEffect(() => {
     const verifyToken = () => {
       let token = Cookies.get("token");
@@ -24,7 +25,9 @@ function Authentication() {
   const handleRegister = async (e) => {
     try {
       e.preventDefault();
+
       if (!name || !email || !password) {
+        console.log("hello");
         return console.log("empty fields");
       }
 
@@ -63,6 +66,7 @@ function Authentication() {
           withCredentials: true,
         }
       );
+
       if (res.status === 200) {
         setIsLoggedIn(true);
         window.location.reload();
