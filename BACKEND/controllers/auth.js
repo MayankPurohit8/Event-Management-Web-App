@@ -43,7 +43,7 @@ module.exports.login = async (req, res) => {
 
     if (result) {
       let token = await genToken(user._id, user.guest, user.name);
-      res.cookie("token", token);
+      res.cookie("token", token, { sameSite: none });
       console.log("user logged in successfully");
       return res.status(200).send("Logged in successfully");
     } else {
