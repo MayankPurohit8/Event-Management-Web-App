@@ -7,7 +7,7 @@ import ManageEvents from "./ManageEvents";
 import Authentication from "./Authentication";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
-const backendUrl = import.meta.VITE__BACKEND_URL;
+const backendUrl = import.meta.env.VITE__BACKEND_URL;
 
 function DashBoard() {
   const [guest, setGuest] = useState(false);
