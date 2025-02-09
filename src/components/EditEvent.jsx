@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-const backendUrl = process.env.BACKEND_URL;
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 function EditEvent({ event, close }) {
   const [title, setTitle] = useState(event.title);
   const [description, setDescription] = useState(event.description);

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import InfoEvent from "./Infoevent";
-const backendUrl = process.env.BACKEND_URL;
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 function Events() {
   const [events, setEvents] = useState([]);
   const [visibility, setVisiblity] = useState(false);
