@@ -53,7 +53,6 @@ function Authentication() {
       e.preventDefault();
 
       if (!email || !password) {
-        console.log(backendUrl);
         return console.log("empty fields");
       }
       let res = await axios.post(

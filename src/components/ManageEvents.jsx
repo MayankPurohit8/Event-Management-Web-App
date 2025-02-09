@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import EditEvent from "./EditEvent";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
-const backendUrl = import.meta.env.VITE__BACKEND_URL;
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 function ManageEvents() {
   const [events, setEvents] = useState([]);
   const [visibility, setVisibility] = useState(false);

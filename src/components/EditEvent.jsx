@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-const backendUrl = import.meta.env.VITE__BACKEND_URL;
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 function EditEvent({ event, close }) {
   const [title, setTitle] = useState(event.title);
   const [description, setDescription] = useState(event.description);

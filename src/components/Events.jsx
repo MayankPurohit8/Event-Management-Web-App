@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import InfoEvent from "./Infoevent";
-const backendUrl = import.meta.env.VITE__BACKEND_URL;
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 function Events() {
   const [events, setEvents] = useState([]);
   const [visibility, setVisiblity] = useState(false);
@@ -14,9 +14,7 @@ function Events() {
   useEffect(() => {
     const getEvents = async () => {
       try {
-        let res = await axios.get(
-          `https://event-management-web-app-backend.onrender.com/events/getEvents`
-        );
+        let res = await axios.get(`${backendUrl}/events/getEvents`);
         setEvents(res.data.events);
       } catch (err) {
         console.log("something went wrong while retrieving events");
