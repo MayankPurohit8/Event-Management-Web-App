@@ -11,7 +11,7 @@ const { bookSlots } = require("./controllers/bookSlots");
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "https://event-management-web-app.onrender.com/",
+    origin: "https://event-management-web-app.onrender.com",
     credentials: true,
   },
 });
