@@ -14,7 +14,13 @@ app.use(
     credentials: true,
   })
 );
-
+const server = http.createServer(app);
+const io = socketIo(server, {
+  cors: {
+    origin: "https://event-management-web-app-theta.vercel.app",
+    credentials: true,
+  },
+});
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
@@ -26,5 +32,17 @@ app.use("/events", eventRouter);
 app.post("/bookSlots", function (req, res) {
   bookSlots(req, res, io);
 });
+io.on("connection", (socket) => {
+  console.log(`User connected: ${socket.id}`);
 
-app.listen(3000, console.log("server is running on port 3000"));
+  socket.on("bookSlot", () => {
+    console.log(`Slot booked by: ${socket.id}`);
+    io.emit("updateSlots", "A new slot was booked!");
+  });
+
+  socket.on("disconnect", () => {
+    console.log(`User disconnected: ${socket.id}`);
+  });
+});
+
+server.listen(3000, console.log("server is running on port 3000"));
