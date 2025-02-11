@@ -3,6 +3,7 @@ const eventModel = require("../models/eventModel");
 module.exports.getEvents = async (req, res) => {
   try {
     let events = await eventModel.find();
+    console.log(events);
     return res.status(200).json({ events });
   } catch (err) {
     return res.status(400).send("somrthing went wrong");
