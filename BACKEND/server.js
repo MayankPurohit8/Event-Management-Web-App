@@ -10,14 +10,14 @@ const { bookSlots } = require("./controllers/bookSlots");
 
 app.use(
   cors({
-    origin: "https://event-management-web-app-theta.vercel.app/",
+    origin: "https://event-management-web-app-theta.vercel.app",
     credentials: true,
   })
 );
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "https://event-management-web-app-theta.vercel.app/",
+    origin: "https://event-management-web-app-theta.vercel.app",
     credentials: true,
   },
 });
