@@ -8,12 +8,7 @@ const userRouter = require("./routes/userRoutes");
 const eventRouter = require("./routes/eventRoutes");
 const { bookSlots } = require("./controllers/bookSlots");
 
-app.use(
-  cors({
-    origin: "https://event-management-web-app-theta.vercel.app",
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 
