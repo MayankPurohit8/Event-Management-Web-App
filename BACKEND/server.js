@@ -18,6 +18,7 @@ app.use(
     credentials: true,
   })
 );
+app.options("*", cors());
 
 app.get("/", function (req, res) {
   res.send("backend is working correctly");
