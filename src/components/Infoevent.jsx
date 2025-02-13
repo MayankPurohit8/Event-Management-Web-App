@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { io } from "socket.io-client";
-const socket = io("https://event-management-web-app-theta.vercel.app");
+
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 function InfoEvent({ event, close }) {
