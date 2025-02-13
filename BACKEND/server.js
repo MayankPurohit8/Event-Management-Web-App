@@ -16,6 +16,7 @@ app.use(cors());
 
 app.get("/", function (req, res) {
   res.send("backend is working correctly");
+  console.log("ok");
 });
 app.use("/user", userRouter);
 app.use("/events", eventRouter);
